@@ -24,13 +24,13 @@ const RecentlyViewed = () => {
       }
 
       // Fetch products by IDs
-      const response = await api.get('/backend/api/products.php?recently-viewed', {
+      const response = await api.get('/api/products?recently-viewed', {
         params: { ids: viewedIds.join(',') }
       })
       
       setProducts(response.data.products || [])
     } catch (error) {
-      console.error('Failed to fetch recently viewed:', error)
+      //console.error('Failed to fetch recently viewed:', error)
       setIsVisible(false)
     } finally {
       setLoading(false)

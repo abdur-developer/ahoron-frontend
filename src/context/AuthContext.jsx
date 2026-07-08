@@ -34,18 +34,18 @@ export const AuthProvider = ({ children }) => {
   const verifyToken = async () => {
     try {
       // Call verify endpoint to check if token is valid
-      const response = await axios.get('/backend/api/verify-token.php')
+      const response = await axios.get('/api/verify-token')
       
       if (response.data.success && response.data.authenticated) {
         setUser(response.data.user)
         setIsAuthenticated(true)
-        console.log('Token verified successfully')
+        //console.log('Token verified successfully')
       } else {
         // Token invalid
         handleLogout()
       }
     } catch (error) {
-      console.error('Token verification failed:', error)
+      //console.error('Token verification failed:', error)
       
       // If 401, clear everything
       if (error.response?.status === 401) {
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
             const parsedUser = JSON.parse(savedUser)
             setUser(parsedUser)
             setIsAuthenticated(true)
-            console.log('Restored user from localStorage')
+            //console.log('Restored user from localStorage')
           } catch (e) {
             handleLogout()
           }
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('/backend/api/login.php', { email, password })
+      const response = await axios.post('/api/login', { email, password })
       
       if (response.data.success) {
         const { token, user: userData } = response.data
@@ -113,7 +113,7 @@ export const AuthProvider = ({ children }) => {
 
   const updateProfile = async (data) => {
     try {
-      const response = await axios.put('/backend/api/profile.php', data)
+      const response = await axios.put('/api/user/profile', data)
       if (response.data.success) {
         setUser(response.data.user)
         localStorage.setItem('user', JSON.stringify(response.data.user))

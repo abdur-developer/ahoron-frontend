@@ -37,7 +37,7 @@ const ProductCard = ({ product }) => {
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden bg-gray-100 dark:bg-gray-700">
         <LazyImage
-          src={`https://ahoron.store/admin/upload/${product.img}`}
+          src={`${product.img}`}
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />

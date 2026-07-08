@@ -49,10 +49,10 @@ const Account = () => {
   const fetchOrders = async () => {
     setLoadingOrders(true)
     try {
-      const response = await api.get('/backend/api/all-orders.php?user_id=' + user?.id)
+      const response = await api.get('/api/all-orders?user_id=' + user?.id)
       setOrders(response.data.orders || [])
     } catch (error) {
-      console.error('Failed to fetch orders:', error)
+      //console.error('Failed to fetch orders:', error)
       toast.error('Failed to load orders')
     } finally {
       setLoadingOrders(false)

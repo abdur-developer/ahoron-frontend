@@ -46,10 +46,10 @@ const Products = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await api.get('/backend/api/categories.php')
+      const response = await api.get('/api/categories')
       setCategories(response.data.categories || [])
     } catch (error) {
-      console.error('Failed to fetch categories:', error)
+      //console.error('Failed to fetch categories:', error)
     }
   }
 
@@ -70,7 +70,7 @@ const Products = () => {
         sort: sortBy,
       }
 
-      const response = await api.get('/backend/api/products.php', { params })
+      const response = await api.get('/api/products', { params })
       
       if (reset) {
         setProducts(response.data.products || [])
@@ -81,7 +81,7 @@ const Products = () => {
       setHasMore(response.data.hasMore || false)
     } catch (error) {
       setError('Failed to load products. Please try again.')
-      console.error('Failed to fetch products:', error)
+      //console.error('Failed to fetch products:', error)
     } finally {
       setLoading(false)
       setLoadingMore(false)
@@ -191,7 +191,7 @@ const Products = () => {
                     key={category.id}
                     onClick={() => setSelectedCategory(category.id)}
                     className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                      selectedCategory === category.id.toString()
+                      selectedCategory === category.id
                         ? 'bg-primary-500 text-white'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
                     }`}
@@ -253,8 +253,8 @@ const Products = () => {
       ) : (
         <>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {products.map((product, index) => (
+              <ProductCard key={`${product.id}_${index}`} product={product} />
             ))}
           </div>
 

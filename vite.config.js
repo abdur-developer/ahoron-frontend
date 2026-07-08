@@ -6,8 +6,8 @@ export default defineConfig({
   server: {
     port: 3001,
     proxy: {
-      '/backend/api': {
-        target: 'https://ahoron.store/',
+      '/api': {
+        target: 'https://api.ahoron.store/',
         changeOrigin: true
       }
     }

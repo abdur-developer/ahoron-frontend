@@ -64,7 +64,7 @@ const SignUp = () => {
     setLoading(true)
     
     try {
-      const response = await api.post('/backend/api/signup.php', {
+      const response = await api.post('/api/signup', {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
@@ -116,7 +116,7 @@ const SignUp = () => {
         {/* Logo & Header */}
         <div className="text-center mb-5">
           <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <img src="https://i.ibb.co.com/GvMLt6gS/logo.jpg" alt="" />
+            <img src="./logo.png" alt="" />
           </div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
             Create Account

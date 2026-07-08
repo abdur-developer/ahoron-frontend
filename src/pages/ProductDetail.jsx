@@ -56,7 +56,7 @@ const ProductDetail = () => {
     try {
       setLoading(true)
       setError(null)
-      const response = await api.get(`/backend/api/products.php?id=${id}`)
+      const response = await api.get(`/api/products?id=${id}`)
       setProduct(response.data.products[0] || null)
 
       // Set default selections
@@ -70,7 +70,7 @@ const ProductDetail = () => {
       //   }
     } catch (error) {
       setError('Failed to load product details')
-      console.error('Failed to fetch product:', error)
+      //console.error('Failed to fetch product:', error)
     } finally {
       setLoading(false)
     }
@@ -97,7 +97,7 @@ const ProductDetail = () => {
         toast.success('Link copied to clipboard!')
       }
     } catch (error) {
-      console.error('Share failed:', error)
+      //console.error('Share failed:', error)
     }
   }
 
@@ -123,7 +123,7 @@ const ProductDetail = () => {
         <div className="relative">
           <div className="aspect-square rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800">
             <LazyImage
-              src={`https://ahoron.store/admin/upload/${images[selectedImage]}`}
+              src={`${images[selectedImage]}`}
               alt={product.name}
               className="w-full h-full object-cover"
             />
@@ -142,7 +142,7 @@ const ProductDetail = () => {
                     }`}
                 >
                   <img
-                    src={`https://ahoron.store/admin/upload/${img}`}
+                    src={`img}`}
                     alt={`${product.name} ${index + 1}`}
                     className="w-full h-full object-cover"
                   />

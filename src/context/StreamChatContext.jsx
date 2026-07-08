@@ -27,10 +27,10 @@ export const StreamChatProvider = ({ children }) => {
     if (authLoading) return
 
     if (isAuthenticated && user) {
-      console.log('User authenticated, initializing chat...', user)
+      //console.log('User authenticated, initializing chat...', user)
       initializeChat()
     } else {
-      console.log('User not authenticated, disconnecting chat...')
+      //console.log('User not authenticated, disconnecting chat...')
       disconnectChat()
     }
 
@@ -49,13 +49,13 @@ export const StreamChatProvider = ({ children }) => {
         throw new Error('No auth token found')
       }
 
-      const response = await api.post('/backend/api/stream-token.php')
+      const response = await api.post('/api/stream-token')
       
       if (!response.data.success) {
         throw new Error(response.data.message || 'Failed to get chat token')
       }
 
-      const { user_id, token: streamToken, api_key } = response.data
+      const { user, streamToken, api_key } = response.data
 
       // Create Stream client
       const client = new StreamChat(api_key)
@@ -63,7 +63,7 @@ export const StreamChatProvider = ({ children }) => {
       // Connect user to Stream
       await client.connectUser(
         {
-          id: user_id,
+          id: user.id,
           name: user.name || 'User',
           email: user.email || '',
           phone: user.phone || '',
@@ -74,28 +74,28 @@ export const StreamChatProvider = ({ children }) => {
 
       // Set up event listeners
       client.on('message.new', (event) => {
-        console.log('New message received:', event)
+        //console.log('New message received:', event)
         if (event.user?.id !== user_id) {
           setUnreadCount(prev => prev + 1)
         }
       })
 
       client.on('connection.changed', (event) => {
-        console.log('Connection status:', event.online ? 'online' : 'offline')
+        //console.log('Connection status:', event.online ? 'online' : 'offline')
       })
 
       client.on('error', (error) => {
-        console.error('Stream chat error:', error)
+        //console.error('Stream chat error:', error)
         setChatError(error.message)
       })
 
       clientRef.current = client
       setChatClient(client)
       setIsChatReady(true)
-      console.log('Chat initialized successfully')
+      //console.log('Chat initialized successfully')
 
     } catch (error) {
-      console.error('Failed to initialize chat:', error)
+      //console.error('Failed to initialize chat:', error)
       setChatError(error.message || 'Failed to connect chat')
       setIsChatReady(false)
       
@@ -110,9 +110,9 @@ export const StreamChatProvider = ({ children }) => {
     if (clientRef.current) {
       try {
         clientRef.current.disconnectUser()
-        console.log('Chat disconnected')
+        //console.log('Chat disconnected')
       } catch (error) {
-        console.error('Error disconnecting chat:', error)
+        //console.error('Error disconnecting chat:', error)
       }
       clientRef.current = null
     }

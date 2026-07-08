@@ -26,7 +26,7 @@ const TopNavbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <img src="https://i.ibb.co.com/GvMLt6gS/logo.jpg" alt="" />
+              <img src="./logo.png" alt="" />
             </div>
             <span className="font-bold text-xl gradient-text hidden sm:block">
               ProtiSheba

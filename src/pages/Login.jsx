@@ -19,7 +19,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     
-    console.log('Login attempt with:', formData.email)
+    //console.log('Login attempt with:', formData.email)
     
     if (!formData.email || !formData.password) {
       toast.error('Please fill in all fields')
@@ -30,7 +30,7 @@ const Login = () => {
     
     const result = await login(formData.email, formData.password)
     
-    console.log('Login result:', result)
+    //console.log('Login result:', result)
     
     if (result.success) {
       toast.success('Welcome back!')
@@ -61,7 +61,7 @@ const Login = () => {
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <img src="https://i.ibb.co.com/GvMLt6gS/logo.jpg" alt="" />
+            <img src="./logo.png" alt="" />
           </div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
             Welcome Back

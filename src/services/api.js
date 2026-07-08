@@ -1,8 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://ahoron.store/',
-  // baseURL: import.meta.env.VITE_API_URL || 'http://localhost',
+  baseURL: import.meta.env.VITE_API_URL || 'https://api.ahoron.store/',
   timeout: 15000,
   headers: {
     'Content-Type': 'application/json',
@@ -16,8 +15,7 @@ api.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
     }
-    console.log(`API Request: ${config.method?.toUpperCase()} ${config.url}`, 
-      token ? '(authenticated)' : '(guest)')
+    // console.log(`API Request: ${config.method?.toUpperCase()} ${config.url}`, token ? '(authenticated)' : '(guest)')
     return config
   },
   (error) => {

@@ -41,7 +41,7 @@ const BannerSlider = ({ banners }) => {
             }`}
           >
             <img
-              src={`https://ahoron.store/admin/upload/${banner.img}`}
+              src={`${banner.image}`}
               alt={`Banner ${index + 1}`}
               className="w-full h-full object-cover"
               loading={index === 0 ? 'eager' : 'lazy'}

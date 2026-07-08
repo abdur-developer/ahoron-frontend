@@ -26,11 +26,11 @@ const Home = () => {
   const fetchHomeData = async () => {
     try {
       const [bannersRes, categoriesRes, featuredRes, specialRes, productsRes] = await Promise.all([
-        api.get('/backend/api/banners.php'),
-        api.get('/backend/api/categories.php'),
-        api.get('/backend/api/products.php?featured'),
-        api.get('/backend/api/products.php?special'),
-        api.get('/backend/api/products.php?page=1&limit=10'),
+        api.get('/api/banners'),
+        api.get('/api/categories'),
+        api.get('/api/products/featured'),
+        api.get('/api/products/special'),
+        api.get('/api/products?page=1&limit=10'),
       ])
 
       setBanners(bannersRes.data.banners || [])
@@ -40,7 +40,7 @@ const Home = () => {
       setAllProducts(productsRes.data.products || [])
       setHasMore(productsRes.data.hasMore || false)
     } catch (error) {
-      console.error('Failed to fetch home data:', error)
+      //console.error('Failed to fetch home data:', error)
     } finally {
       setLoading(false)
     }
@@ -49,13 +49,13 @@ const Home = () => {
   const loadMoreProducts = async () => {
     try {
       const nextPage = page + 1
-      const response = await api.get(`/backend/api/products.php?page=${nextPage}&limit=10`)
+      const response = await api.get(`/api/products?page=${nextPage}&limit=10`)
       
       setAllProducts(prev => [...prev, ...response.data.products])
       setPage(nextPage)
       setHasMore(response.data.hasMore)
     } catch (error) {
-      console.error('Failed to load more products:', error)
+      //console.error('Failed to load more products:', error)
     }
   }
 

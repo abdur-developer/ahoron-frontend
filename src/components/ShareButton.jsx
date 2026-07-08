@@ -24,7 +24,7 @@ const ShareButton = ({ title, text, url }) => {
 
     switch (platform) {
       case 'facebook':
-        shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
+        shareLink = `https://www.facebook.com/sharer/sharer?u=${encodeURIComponent(shareUrl)}`
         break
       case 'twitter':
         shareLink = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`
@@ -43,7 +43,7 @@ const ShareButton = ({ title, text, url }) => {
             setShowOptions(false)
             return
           } catch (error) {
-            console.error('Share failed:', error)
+            //console.error('Share failed:', error)
           }
         }
         return

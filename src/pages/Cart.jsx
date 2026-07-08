@@ -69,7 +69,7 @@ const Cart = () => {
         user_id: user?.id || null,
       }
 
-      const response = await api.post('/backend/api/orders.php', orderData)
+      const response = await api.post('/api/orders', orderData)
       
       if (response.data.success) {
         toast.success('Order placed successfully!')
@@ -118,7 +118,7 @@ const Cart = () => {
           >
             <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700 flex-shrink-0">
               <LazyImage
-                src={`https://ahoron.store/admin/upload/${item.img}`}
+                src={`${item.img}`}
                 alt={item.name}
                 className="w-full h-full object-cover"
               />

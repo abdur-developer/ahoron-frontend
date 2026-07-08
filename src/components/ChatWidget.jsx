@@ -34,7 +34,7 @@ const ChatWidget = () => {
 
   const initChannel = async () => {
     if (!chatClient?.user?.id) {
-      console.error('No user ID available')
+      //console.error('No user ID available')
       return
     }
 
@@ -62,7 +62,7 @@ const ChatWidget = () => {
       resetUnreadCount()
 
     } catch (error) {
-      console.error('Failed to init channel:', error)
+      //console.error('Failed to init channel:', error)
       setLoading(false)
       toast.error('Failed to load chat')
     }
@@ -102,7 +102,7 @@ const ChatWidget = () => {
       setNewMessage('')
       inputRef.current?.focus()
     } catch (error) {
-      console.error('Failed to send message:', error)
+      //console.error('Failed to send message:', error)
       toast.error('Failed to send message')
     }
   }
