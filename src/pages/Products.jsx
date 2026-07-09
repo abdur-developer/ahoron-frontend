@@ -188,10 +188,10 @@ const Products = () => {
                 </button>
                 {categories.map((category) => (
                   <button
-                    key={category.id}
-                    onClick={() => setSelectedCategory(category.id)}
+                    key={category._id}
+                    onClick={() => setSelectedCategory(category._id)}
                     className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                      selectedCategory === category.id
+                      selectedCategory === category._id
                         ? 'bg-primary-500 text-white'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
                     }`}
@@ -254,7 +254,7 @@ const Products = () => {
         <>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {products.map((product, index) => (
-              <ProductCard key={`${product.id}_${index}`} product={product} />
+              <ProductCard key={`${product._id}_${index}`} product={product} />
             ))}
           </div>
 

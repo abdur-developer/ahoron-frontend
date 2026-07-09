@@ -29,7 +29,7 @@ const TopNavbar = () => {
               <img src="./logo.png" alt="" />
             </div>
             <span className="font-bold text-xl gradient-text hidden sm:block">
-              ProtiSheba
+              Ahoron Store
             </span>
           </Link>
 

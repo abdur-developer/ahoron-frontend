@@ -59,8 +59,8 @@ const RecentlyViewed = () => {
       <div className="flex space-x-3 overflow-x-auto pb-2">
         {products.map((product) => (
           <Link
-            key={product.id}
-            to={`/product/${product.id}`}
+            key={product._id}
+            to={`/product/${product._id}`}
             className="flex-shrink-0 w-24 group"
           >
             <div className="w-24 h-24 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-700 mb-2">

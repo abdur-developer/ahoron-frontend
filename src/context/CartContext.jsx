@@ -24,7 +24,7 @@ export const CartProvider = ({ children }) => {
   const addItem = (product, quantity = 1, color = '', size = '') => {
     setItems(prev => {
       const existingIndex = prev.findIndex(
-        item => item.id === product.id && item.color === color && item.size === size
+        item => item.id === product._id && item.color === color && item.size === size
       )
 
       if (existingIndex > -1) {

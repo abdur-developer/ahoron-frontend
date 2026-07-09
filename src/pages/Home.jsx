@@ -127,7 +127,7 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product._id} product={product} />
             ))}
           </div>
         </section>
@@ -149,7 +149,7 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {specialDeals.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product._id} product={product} />
             ))}
           </div>
         </section>
@@ -162,7 +162,7 @@ const Home = () => {
         </h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {allProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product._id} product={product} />
           ))}
         </div>
         

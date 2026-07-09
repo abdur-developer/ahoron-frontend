@@ -11,9 +11,9 @@ const ProductCard = ({ product }) => {
 
   // Check if product already in cart
   useEffect(() => {
-    const isInCart = items.some(item => item.id === product.id)
+    const isInCart = items.some(item => item._id === product._id)
     setIsAdded(isInCart)
-  }, [items, product.id])
+  }, [items, product._id])
 
   const handleAddToCart = (e) => {
     e.preventDefault()
@@ -31,7 +31,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <Link
-      to={`/product/${product.id}`}
+      to={`/product/${product._id}`}
       className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden card-shadow card-hover group animate-in"
     >
       {/* Image Container */}

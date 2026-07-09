@@ -12,7 +12,7 @@ const ProductDetail = () => {
   const { addItem, items } = useCart()
   const [isInCart, setIsInCart] = useState(false)
 
-  const { id } = useParams()
+  const { _id } = useParams()
   const navigate = useNavigate()
 
   const [product, setProduct] = useState(null)
@@ -25,9 +25,9 @@ const ProductDetail = () => {
   const [isWishlisted, setIsWishlisted] = useState(false)
 
   useEffect(() => {
-    const inCart = items.some(item => item.id === product?.id)
+    const inCart = items.some(item => item._id === product?._id)
     setIsInCart(inCart)
-  }, [items, product?.id])
+  }, [items, product?._id])
 
   const handleAddToCart = () => {
     if (!selectedColor && product.colors) {
@@ -49,15 +49,16 @@ const ProductDetail = () => {
   useEffect(() => {
     fetchProduct()
     // Add to recently viewed
-    addToRecentlyViewed(id)
-  }, [id])
+    addToRecentlyViewed(_id)
+  }, [_id])
 
   const fetchProduct = async () => {
     try {
       setLoading(true)
       setError(null)
-      const response = await api.get(`/api/products?id=${id}`)
-      setProduct(response.data.products[0] || null)
+      const response = await api.get(`/api/products/${_id}`)
+      // console.log(response.data.product);
+      setProduct(response.data.product || null)
 
       // Set default selections
       //   if (response.data.product?.colors) {
@@ -78,7 +79,7 @@ const ProductDetail = () => {
 
   const addToRecentlyViewed = (productId) => {
     const viewed = JSON.parse(localStorage.getItem('recentlyViewed') || '[]')
-    const updated = [productId, ...viewed.filter(id => id !== productId)].slice(0, 10)
+    const updated = [productId, ...viewed.filter(_id => _id !== productId)].slice(0, 10)
     localStorage.setItem('recentlyViewed', JSON.stringify(updated))
   }
 

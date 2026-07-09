@@ -17,7 +17,7 @@ const CategoryScroll = ({ categories }) => {
   }
 
   const handleCategoryClick = (category) => {
-    navigate(`/products?category=${category.id}`)
+    navigate(`/products?category=${category._id}`)
   }
 
   if (!categories || categories.length === 0) return null
@@ -41,7 +41,7 @@ const CategoryScroll = ({ categories }) => {
       >
         {categories.map((category) => (
           <button
-            key={category.id}
+            key={category._id}
             onClick={() => handleCategoryClick(category)}
             className="flex flex-col items-center space-y-2 flex-shrink-0 w-20 group/category"
             style={{ scrollSnapAlign: 'start' }}
