@@ -1,7 +1,7 @@
 import { FaWhatsapp } from "react-icons/fa"
 
 const handleOpenChat = () => {
-  const whatsappUrl = "https://wa.me/8801883141337?text=Hello%20Ahoron%20Support!";
+  const whatsappUrl = "https://wa.me/8801333968745?text=Hello%20Ahoron%20Support!";
   window.open(whatsappUrl, "_blank");
 }
 
