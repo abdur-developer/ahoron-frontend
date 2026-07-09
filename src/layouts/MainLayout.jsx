@@ -12,7 +12,7 @@ const MainLayout = () => {
         <Outlet />
       </main>
       <BottomNavbar />
-      <ChatWidget /> 
+      {/* <ChatWidget />  */}
     </div>
   )
 }
