@@ -4,6 +4,7 @@ import { FiUser, FiSun, FiMoon, FiSearch } from 'react-icons/fi'
 import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
 import { useDebounce } from '../hooks/useDebounce'
+import { IoMdInformationCircleOutline } from 'react-icons/io'
 
 const TopNavbar = () => {
   const { user, isAuthenticated } = useAuth()
@@ -62,6 +63,13 @@ const TopNavbar = () => {
 
           {/* Actions */}
           <div className="flex items-center space-x-3">
+            <Link to="/about"
+              className="w-10 md:hidden h-10 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              aria-label="Toggle theme"
+            >
+              <IoMdInformationCircleOutline className="w-5 h-5 text-gray-600" />
+            </Link>
+
             <button
               onClick={toggleTheme}
               className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"

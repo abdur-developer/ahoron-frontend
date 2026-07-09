@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ThemeProvider>
         <AuthProvider>
           <CartProvider>
-            <StreamChatProvider> 
+            {/* <StreamChatProvider>  */}
             <App />
             <Toaster position="top-center" toastOptions={
               {
@@ -27,7 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                   fontSize: '14px',
                 },
               }}/>
-            </StreamChatProvider>
+            {/* </StreamChatProvider> */}
           </CartProvider>
         </AuthProvider>
       </ThemeProvider>
