@@ -32,6 +32,7 @@ const ProductCard = ({ product }) => {
   return (
     <Link
       to={`/product/${product._id}`}
+      style={{minWidth: '150px'}}
       className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden card-shadow card-hover group animate-in"
     >
       {/* Image Container */}

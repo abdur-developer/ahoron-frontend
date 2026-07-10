@@ -7,6 +7,7 @@ import LazyImage from '../components/LazyImage'
 import LoadingSpinner from '../components/LoadingSpinner'
 import ErrorState from '../components/ErrorState'
 import toast from 'react-hot-toast'
+import SimilarProducts from '../components/SimilarProducts'
 
 const ProductDetail = () => {
   const { addItem, items } = useCart()
@@ -16,6 +17,7 @@ const ProductDetail = () => {
   const navigate = useNavigate()
 
   const [product, setProduct] = useState(null)
+  const [similarProducts, setSimilarProducts] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [selectedImage, setSelectedImage] = useState(0)
@@ -61,14 +63,16 @@ const ProductDetail = () => {
       setProduct(response.data.product || null)
 
       // Set default selections
-      //   if (response.data.product?.colors) {
-      //     const colors = response.data.product.colors.split(',')
-      //     if (colors.length > 0) setSelectedColor(colors[0].trim())
-      //   }
-      //   if (response.data.product.sizes) {
-      //     const sizes = response.data.product.sizes.split(',')
-      //     if (sizes.length > 0) setSelectedSize(sizes[0].trim())
-      //   }
+        if (response.data.product?.colors) {
+          const colors = response.data.product.colors.split(',')
+          if (colors.length > 0) setSelectedColor(colors[0].trim())
+        }
+        if (response.data.product.sizes) {
+          const sizes = response.data.product.sizes.split(',')
+          if (sizes.length > 0) setSelectedSize(sizes[0].trim())
+        }
+      const similarResponse = await api.get(`/api/products?category=${response.data.product.type}&limit=10`)
+      setSimilarProducts(similarResponse.data.products || null)
     } catch (error) {
       setError('Failed to load product details')
       //console.error('Failed to fetch product:', error)
@@ -324,6 +328,8 @@ const ProductDetail = () => {
           )}
         </div>
       </div>
+      {/* Similar Products */}
+      {similarProducts && similarProducts.length > 0 && <SimilarProducts products={similarProducts} />}
 
       {/* Sticky Bottom Actions */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg border-t border-gray-200 dark:border-gray-700 p-4 safe-area-bottom">
