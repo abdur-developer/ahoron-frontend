@@ -49,7 +49,7 @@ const Account = () => {
   const fetchOrders = async () => {
     setLoadingOrders(true)
     try {
-      const response = await api.get('/api/all-orders?user_id=' + user?.id)
+      const response = await api.get('/api/orders')
       setOrders(response.data.orders || [])
     } catch (error) {
       //console.error('Failed to fetch orders:', error)
